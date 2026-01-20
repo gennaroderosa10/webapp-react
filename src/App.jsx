@@ -1,15 +1,24 @@
-import { useState } from 'react'
-import Header from '../components/Header'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AppLayout from './layouts/AppLayout';
+import Home from './pages/Home';
+import MoviePage from './pages/MoviesPage';
 
 function App() {
   const nomeApp = "Movie App";
 
   return (
     <>
-      <Header nomeApp={nomeApp} />
-      <h1>HELLO WORLD</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout nomeApp={nomeApp} />}>
+            <Route element={<Home />} path='/' />
+            <Route element={<MoviePage />} path='/movies' />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
+
 }
 
 
